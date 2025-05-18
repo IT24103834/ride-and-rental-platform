@@ -4,7 +4,7 @@ body {
     margin: 0;
     padding: 0;
     min-height: 100vh;
-    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    background: #f6f8fb;
     color: #2c3e50;
 }
 
@@ -80,42 +80,49 @@ body {
 
 /* Form Styles */
 .form-container {
-    background: white;
-    max-width: 600px;
-    margin: 40px auto;
-    padding: 40px;
-    border-radius: 15px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background: #fff;
+    border-radius: 32px;
+    box-shadow: 0 8px 32px rgba(44,62,80,0.08);
+    padding: 3.5rem 3rem 2.5rem 3rem;
+    max-width: 700px;
+    width: 100%;
+    margin: 2.5rem auto;
 }
 
 .form-title {
     text-align: center;
+    font-size: 2.6rem;
+    font-weight: 800;
     color: #2c3e50;
-    font-size: 2rem;
-    margin-bottom: 30px;
+    margin-bottom: 2.2rem;
+    letter-spacing: 0.5px;
 }
 
-.form-group {
-    margin-bottom: 25px;
+.form-title i {
+    font-size: 2.8rem;
+    color: #2c3e50;
+    margin-right: 0.7rem;
 }
 
-label {
+.form-group label {
+    color: #2c3e50;
+    font-weight: 600;
+    margin-bottom: 0.7rem;
     display: block;
-    margin-bottom: 8px;
-    color: #2c3e50;
-    font-weight: 500;
+    font-size: 1.25rem;
 }
 
 input[type="text"],
 input[type="number"],
 select {
     width: 100%;
-    padding: 12px;
-    border: 2px solid #e0e0e0;
-    border-radius: 8px;
-    box-sizing: border-box;
-    font-size: 16px;
-    transition: border-color 0.3s ease;
+    padding: 1.2rem 1.2rem;
+    border: 2px solid #e5e7eb;
+    border-radius: 14px;
+    font-size: 1.25rem;
+    background: #fafbfc;
+    margin-bottom: 1.5rem;
+    transition: border-color 0.3s;
 }
 
 input[type="text"]:focus,
@@ -126,20 +133,25 @@ select:focus {
 }
 
 .btn-primary {
-    background-color: #3498db;
-    color: white;
-    padding: 14px 28px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
     width: 100%;
-    font-size: 16px;
-    font-weight: 500;
-    transition: background-color 0.3s ease;
+    background: #5da6e9;
+    color: #fff;
+    padding: 1.2rem 0;
+    border: none;
+    border-radius: 18px;
+    font-size: 1.35rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 0.5rem;
+    transition: background 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.7rem;
 }
 
 .btn-primary:hover {
-    background-color: #2980b9;
+    background: #217dbb;
 }
 
 /* Table Styles */
@@ -220,21 +232,27 @@ select:focus {
 }
 
 .back-link {
-    text-align: center;
-    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    margin-top: 2.2rem;
+    font-size: 1.25rem;
+    font-weight: 600;
 }
 
 .back-link a {
-    color: #666;
+    color: #8a8a8a;
     text-decoration: none;
-    display: inline-flex;
+    font-weight: 600;
+    font-size: 1.25rem;
+    transition: color 0.2s;
+    display: flex;
     align-items: center;
-    gap: 5px;
-    transition: color 0.3s ease;
+    gap: 0.5rem;
 }
 
 .back-link a:hover {
-    color: #2c3e50;
+    color: #217dbb;
+    text-decoration: underline;
 }
 
 /* Search Results */
