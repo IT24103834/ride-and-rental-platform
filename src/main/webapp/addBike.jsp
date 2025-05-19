@@ -71,6 +71,12 @@
             margin-bottom: 15px;
         }
 
+        .form-wrapper {
+            max-width: 600px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
         .input-group {
             position: relative;
             margin-bottom: 0.7rem;
@@ -84,6 +90,8 @@
             color: #666;
             z-index: 2;
             pointer-events: none;
+            font-size: 1rem;
+            line-height: 1;
         }
 
         .input-group input,
@@ -95,6 +103,7 @@
             font-size: 1rem;
             background-color: white;
             color: #333;
+            box-sizing: border-box;
         }
 
         /* Specific styles for select element */
@@ -121,6 +130,19 @@
         .input-group input:focus {
             outline: none;
             border-color: #3498db;
+        }
+
+        .input-group input[type="number"] {
+            text-align: left;
+            padding-right: 45px;
+            -moz-appearance: textfield;
+        }
+
+        .input-group input[type="number"]::-webkit-outer-spin-button,
+        .input-group input[type="number"]::-webkit-inner-spin-button {
+            margin-left: auto;
+            right: 10px;
+            position: absolute;
         }
 
         .submit-btn {
@@ -220,6 +242,7 @@
             <i class="fas fa-tag"></i>
             <input type="text" id="model" name="model" placeholder="Enter bike model" required>
         </div>
+
 
         <div class="input-group">
             <i class="fas fa-bicycle"></i>
