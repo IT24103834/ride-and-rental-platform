@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Delete Rental Request</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 min-h-screen flex items-center justify-center">
+<div class="container mx-auto p-6">
+    <div class="max-w-md mx-auto bg-white rounded-xl shadow-lg p-6">
+        <h1 class="text-3xl font-bold text-gray-900 mb-6 text-center">Delete Rental Request</h1>
+        <p class="text-gray-700 mb-6">Are you sure you want to delete the request for <span th:text="${request.userName}"></span>?</p>
+        <form th:action="@{/requests/delete/{id}(id=${request.id})}" method="post" class="space-y-4">
+            <div class="flex justify-end space-x-4">
+                <a href="/requests" class="bg-gray-500 text-white px-4 py-2 rounded-lg hover:bg-gray-600 transition">Cancel</a>
+                <button type="submit" class="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition">Delete</button>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

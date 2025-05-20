@@ -1,0 +1,3 @@
+2,hh,Electric,Assigned
+3,Kaja,Manual,Assigned
+4,Kaja,Electric,Pending

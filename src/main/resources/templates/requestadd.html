@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Rental Request</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 min-h-screen flex items-center justify-center">
+<div class="container mx-auto p-6">
+    <div class="max-w-md mx-auto bg-white rounded-xl shadow-lg p-6">
+        <h1 class="text-3xl font-bold text-gray-900 mb-6 text-center">Add Rental Request</h1>
+        <form th:action="@{/requests/add}" method="post" class="space-y-4">
+            <div>
+                <label class="block text-gray-700 font-medium mb-1">User Name</label>
+                <input type="text" name="userName" class="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+            </div>
+            <div>
+                <label class="block text-gray-700 font-medium mb-1">Bike Type</label>
+                <select name="bikeType" class="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                    <option value="Electric">Electric Bike</option>
+                    <option value="Manual">Manual Bike</option>
+                </select>
+            </div>
+            <div class="flex justify-end space-x-4">
+                <a href="/requests" class="bg-gray-500 text-white px-4 py-2 rounded-lg hover:bg-gray-600 transition">Cancel</a>
+                <button type="submit" class="bg-teal-500 text-white px-4 py-2 rounded-lg hover:bg-teal-600 transition">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

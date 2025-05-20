@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Rental Request</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 min-h-screen flex items-center justify-center">
+<div class="container mx-auto p-6">
+    <div class="max-w-md mx-auto bg-white rounded-xl shadow-lg p-6">
+        <h1 class="text-3xl font-bold text-gray-900 mb-6 text-center">Edit Rental Request</h1>
+        <form th:action="@{/requests/edit}" method="post" class="space-y-4">
+            <input type="hidden" name="id" th:value="${request.id}">
+            <div>
+                <label class="block text-gray-700 font-medium mb-1">User Name</label>
+                <input type="text" name="userName" th:value="${request.userName}" class="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+            </div>
+            <div>
+                <label class="block text-gray-700 font-medium mb-1">Bike Type</label>
+                <select name="bikeType" class="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                    <option value="Electric" th:selected="${request.bikeType == 'Electric'}">Electric Bike</option>
+                    <option value="Manual" th:selected="${request.bikeType == 'Manual'}">Manual Bike</option>
+                </select>
+            </div>
+            <div>
+                <label class="block text-gray-700 font-medium mb-1">Status</label>
+                <select name="status" class="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                    <option value="Pending" th:selected="${request.status == 'Pending'}">Pending</option>
+                    <option value="Assigned" th:selected="${request.status == 'Assigned'}">Assigned</option>
+                    <option value="Cancelled" th:selected="${request.status == 'Cancelled'}">Cancelled</option>
+                </select>
+            </div>
+            <div class="flex justify-end space-x-4">
+                <a href="/requests" class="bg-gray-500 text-white px-4 py-2 rounded-lg hover:bg-gray-600 transition">Cancel</a>
+                <button type="submit" class="bg-teal-500 text-white px-4 py-2 rounded-lg hover:bg-teal-600 transition">Update</button>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>
