@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Create User</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(90deg, #e0f2fe, #bae6fd, #7dd3fc);
+      margin: 0;
+      padding: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .container {
+      background-color: #ffffff;
+      padding: 28px 32px;
+      border-radius: 18px;
+      box-shadow: 0 14px 32px rgba(0, 123, 255, 0.18);
+      max-width: 360px;
+      width: 100%;
+      animation: fadeIn 0.5s ease forwards;
+    }
+
+    h2 {
+      text-align: center;
+      color: #1e3a8a; /* deeper blue */
+      margin-bottom: 28px;
+      font-weight: 700;
+      font-size: 1.8rem;
+      letter-spacing: 0.02em;
+    }
+
+    form label {
+      display: block;
+      font-weight: 700;
+      color: #2563eb; /* blue-600 */
+      margin-bottom: 8px;
+      margin-top: 16px;
+      font-size: 1rem;
+    }
+
+    form input[type="text"],
+    form input[type="date"] {
+      width: 100%;
+      padding: 12px 14px;
+      font-size: 1rem;
+      border: 2px solid #93c5fd; /* blue-300 */
+      border-radius: 12px;
+      box-sizing: border-box;
+      background-color: #eff6ff; /* blue-50 */
+      color: #1e40af; /* blue-900 */
+      transition: border-color 0.3s ease, background-color 0.3s ease;
+      outline-offset: 2px;
+    }
+    form input[type="text"]:focus,
+    form input[type="date"]:focus {
+      border-color: #3b82f6; /* blue-500 */
+      background-color: #dbeafe; /* blue-100 */
+      outline: none;
+      box-shadow: 0 0 8px rgba(59, 130, 246, 0.4);
+    }
+
+    form button {
+      width: 100%;
+      margin-top: 28px;
+      padding: 14px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      background-color: #3b82f6; /* blue-500 */
+      color: white;
+      border: none;
+      border-radius: 14px;
+      cursor: pointer;
+      box-shadow: 0 6px 15px rgba(59, 130, 246, 0.45);
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    form button:hover {
+      background-color: #2563eb; /* blue-600 */
+      box-shadow: 0 8px 22px rgba(37, 99, 235, 0.6);
+    }
+
+    .message {
+      margin-top: 22px;
+      color: #16a34a; /* green-600 */
+      text-align: center;
+      font-weight: 700;
+      font-size: 1rem;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(20px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h2>Create a User</h2>
+
+  <form th:action="@{/users/create}" method="post" th:object="${user}">
+    <div class="form-group">
+      <label>First Name</label>
+      <input type="text" th:field="*{firstName}" required />
+    </div>
+
+    <div class="form-group">
+      <label>Last Name</label>
+      <input type="text" th:field="*{lastName}" required />
+    </div>
+
+    <div class="form-group">
+      <label>Email</label>
+      <input type="email" th:field="*{email}" required />
+    </div>
+
+    <div class="form-group">
+      <label>Town</label>
+      <input type="text" th:field="*{town}" />
+    </div>
+
+    <div class="form-group">
+      <label>Password</label>
+      <input type="password" th:field="*{password}" required />
+    </div>
+
+    <button type="submit">Create User</button>
+  </form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <p th:if="${message}" th:text="${message}" class="message"></p>
+</div>
+</body>
+</html>

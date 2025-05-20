@@ -1,0 +1,3 @@
+Lafry FH,0740261660,Kandy,Colombo,2025-05-19
+Kavee,1234567891,Badulla,Matale,2025-05-30
+Jenod,0123456789,Jaffna,Malabe,2025-05-31

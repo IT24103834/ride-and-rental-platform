@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Bike List</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 min-h-screen">
+<div class="container mx-auto p-6">
+    <h1 class="text-3xl font-bold text-gray-900 mb-6">Bike List</h1>
+    <div class="mb-6 flex flex-col sm:flex-row sm:items-center sm:space-x-4">
+        <form th:action="@{/bikes}" method="get" class="flex-1 mb-4 sm:mb-0">
+            <div class="flex space-x-2">
+                <input type="text" name="searchQuery" th:value="${searchQuery}" placeholder="Search by model or type" class="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <label for="sortBy" class="text-gray-700 font-medium ml-4">Sort by:</label>
+                <select id="sortBy" name="sortBy" class="p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="" th:selected="${sortBy == null}">None</option>
+                    <option value="availability" th:selected="${sortBy == 'availability'}">Availability (High to Low)</option>
+                    <option value="rating" th:selected="${sortBy == 'rating'}">Rating (High to Low)</option>
+                </select>
+                <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition">Search</button>
+            </div>
+        </form>
+        <a href="/bikes/add" class="bg-teal-500 text-white px-4 py-2 rounded-lg hover:bg-teal-600 transition">Add New Bike</a>
+    </div>
+    <div class="overflow-x-auto">
+        <table class="min-w-full bg-white shadow-lg rounded-xl">
+            <thead>
+            <tr class="bg-gray-200 text-gray-700">
+                <th class="py-3 px-4 text-left">ID</th>
+                <th class="py-3 px-4 text-left">Type</th>
+                <th class="py-3 px-4 text-left">Model</th>
+                <th class="py-3 px-4 text-left">Availability</th>
+                <th class="py-3 px-4 text-left">Rating</th>
+                <th class="py-3 px-4 text-left">Details</th>
+                <th class="py-3 px-4 text-left">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="bike : ${bikes}" class="border-b hover:bg-gray-100">
+                <td class="py-3 px-4" th:text="${bike.id}"></td>
+                <td class="py-3 px-4" th:text="${bike.type}"></td>
+                <td class="py-3 px-4" th:text="${bike.model}"></td>
+                <td class="py-3 px-4" th:text="${bike.availabilityCount}"></td>
+                <td class="py-3 px-4" th:text="${bike.rating}"></td>
+                <td class="py-3 px-4" th:text="${bike.displayInfo()}"></td>
+                <td class="py-3 px-4">
+                    <a th:href="@{/bikes/edit/}+${bike.id}" class="bg-blue-500 text-white px-3 py-1 rounded-lg hover:bg-blue-600 transition mr-2">Edit</a>
+                    <a th:href="@{/bikes/delete/}+${bike.id}" class="bg-red-500 text-white px-3 py-1 rounded-lg hover:bg-red-600 transition">Delete</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div th:if="${#lists.isEmpty(bikes)}" class="text-center text-gray-500 mt-6">
+        <p>No bikes found. Add one to get started!</p>
+    </div>
+</div>
+</body>
+</html>

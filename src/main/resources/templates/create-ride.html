@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Create Ride</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f2f4f8;
+            margin: 0;
+            padding: 40px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 30px 28px;
+            border-radius: 16px;
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+            max-width: 360px;
+            width: 100%;
+            animation: fadeIn 0.6s ease forwards;
+        }
+
+        h2 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 24px;
+            font-weight: 700;
+            font-size: 1.75rem;
+        }
+
+        form label {
+            display: block;
+            font-weight: 700;
+            color: #2563eb;
+            margin-bottom: 6px;
+            margin-top: 14px;
+            font-size: 0.95rem;
+        }
+
+        form input[type="text"],
+        form input[type="date"] {
+            width: 100%;
+            padding: 10px 12px;
+            font-size: 0.95rem;
+            border: 2px solid #93c5fd;
+            border-radius: 10px;
+            box-sizing: border-box;
+            background-color: #eff6ff;
+            color: #1e40af;
+            transition: border-color 0.3s ease;
+            outline-offset: 2px;
+        }
+
+        form input[type="text"]:focus,
+        form input[type="date"]:focus {
+            border-color: #3b82f6;
+            background-color: #dbeafe;
+            outline: none;
+        }
+
+        form button {
+            width: 100%;
+            margin-top: 28px;
+            padding: 12px;
+            font-size: 1rem;
+            font-weight: 700;
+            background-color: #3b82f6;
+            color: white;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            box-shadow: 0 6px 15px rgba(59, 130, 246, 0.4);
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        form button:hover {
+            background-color: #2563eb;
+            box-shadow: 0 8px 20px rgba(37, 99, 235, 0.5);
+        }
+
+        .message {
+            margin-top: 20px;
+            color: #16a34a;
+            text-align: center;
+            font-weight: 700;
+            font-size: 1rem;
+        }
+
+        @keyframes fadeIn {
+            from {opacity: 0; transform: translateY(20px);}
+            to {opacity: 1; transform: translateY(0);}
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2>Create a Ride Share</h2>
+
+    <form th:action="@{/create-ride}" th:object="${ride}" method="post">
+        <label>Name:</label>
+        <input type="text" th:field="*{name}" required>
+
+        <label>Contact:</label>
+        <input type="text" th:field="*{contact}" pattern="[0-9]{10}" required>
+
+        <label>Origin:</label>
+        <input type="text" th:field="*{origin}" required>
+
+        <label>Destination:</label>
+        <input type="text" th:field="*{destination}" required>
+
+        <label>Travel Date:</label>
+        <input type="date" th:field="*{travelDate}" required>
+
+        <button type="submit">Share Ride</button>
+    </form>
+
+    <p th:if="${message}" th:text="${message}" class="message"></p>
+</div>
+</body>
+</html>

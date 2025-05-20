@@ -1,0 +1,5 @@
+1,Lafry,Ahmd,lafry@mail.com,Akkaraipattu,fhlafryi
+2,Thasfeer,Ahmth,thasfeer@mail.com,Ninthavur,tbr1210
+3,Kavi,B,kavi@mail.com,badulla,kavib123
+4,Thasfeer,Ahmth,thasfeer@mail.com,Ninthavur,tbr1210
+5,Nethsara,M,nethsara@mail.com,Galle,tbr1210

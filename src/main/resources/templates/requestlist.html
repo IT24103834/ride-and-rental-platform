@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Rental Requests</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Sticky header for better usability */
+        thead tr {
+            position: sticky;
+            top: 0;
+            background-color: #e5e7eb; /* Tailwind gray-200 */
+            z-index: 10;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+<div class="container mx-auto p-6 max-w-5xl">
+    <h1 class="text-3xl font-extrabold text-gray-900 mb-8 text-center select-none">Rental Requests</h1>
+
+    <div th:if="${message}"
+         class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 mb-8 rounded shadow-sm max-w-3xl mx-auto select-text">
+        <p th:text="${message}" class="text-center font-semibold"></p>
+    </div>
+
+    <div class="mb-6 flex justify-center space-x-4">
+        <a href="/requests/add"
+           class="bg-teal-500 hover:bg-teal-600 text-white px-5 py-2 rounded-lg shadow-md font-semibold transition focus:outline-none focus:ring-2 focus:ring-teal-400 select-none">
+            Add New Request
+        </a>
+        <a href="/bikes"
+           class="bg-gray-500 hover:bg-gray-600 text-white px-5 py-2 rounded-lg shadow-md font-semibold transition focus:outline-none focus:ring-2 focus:ring-gray-400 select-none">
+            Back to Bikes
+        </a>
+    </div>
+
+    <div class="overflow-x-auto rounded-xl shadow-lg bg-white border border-gray-200">
+        <table class="min-w-full divide-y divide-gray-200 rounded-xl">
+            <thead>
+            <tr class="bg-gray-200 text-gray-700 uppercase tracking-wide font-semibold select-none">
+                <th class="py-3 px-4 text-left">ID</th>
+                <th class="py-3 px-4 text-left">User Name</th>
+                <th class="py-3 px-4 text-left">Bike Type</th>
+                <th class="py-3 px-4 text-left">Status</th>
+                <th class="py-3 px-4 text-left">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="request : ${requests}" class="border-b hover:bg-gray-100 transition select-text cursor-default">
+                <td class="py-3 px-4" th:text="${request.id}"></td>
+                <td class="py-3 px-4" th:text="${request.userName}"></td>
+                <td class="py-3 px-4" th:text="${request.bikeType}"></td>
+                <td class="py-3 px-4 capitalize font-medium" th:text="${request.status}"></td>
+                <td class="py-3 px-4 flex space-x-2">
+                    <a th:href="@{/requests/edit/}+${request.id}"
+                       class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-1.5 rounded-lg font-semibold shadow-sm transition focus:outline-none focus:ring-2 focus:ring-blue-400">
+                        Edit
+                    </a>
+                    <a th:href="@{/requests/delete/}+${request.id}"
+                       class="bg-red-500 hover:bg-red-600 text-white px-4 py-1.5 rounded-lg font-semibold shadow-sm transition focus:outline-none focus:ring-2 focus:ring-red-400">
+                        Delete
+                    </a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div th:if="${#lists.isEmpty(requests)}" class="text-center text-gray-500 mt-8 font-medium select-none">
+        <p>No rental requests found.</p>
+    </div>
+</div>
+</body>
+</html>

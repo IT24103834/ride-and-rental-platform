@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Edit Profile</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f4f6f8;
+      margin: 0;
+      padding: 40px 0;
+      display: flex;
+      justify-content: center;
+    }
+
+    .container {
+      max-width: 400px;
+      width: 100%;
+      padding: 24px 28px;
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      animation: fadeIn 0.5s ease forwards;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #2c3e50;
+      font-weight: 700;
+      font-size: 1.5rem;
+    }
+
+    form label {
+      display: block;
+      font-weight: 600;
+      color: #34495e;
+      margin-bottom: 5px;
+      margin-top: 12px;
+      font-size: 0.85rem;
+    }
+
+    form input[type="text"],
+    form input[type="email"],
+    form input[type="password"] {
+      width: 100%;
+      padding: 8px 10px;
+      font-size: 0.85rem;
+      border: 2px solid #93c5fd;
+      border-radius: 12px;
+      box-sizing: border-box;
+      background-color: #eff6ff;
+      color: #1e40af;
+      transition: border-color 0.3s ease, background-color 0.3s ease;
+      outline-offset: 2px;
+    }
+
+    form input[type="text"]:focus,
+    form input[type="email"]:focus,
+    form input[type="password"]:focus {
+      border-color: #3b82f6;
+      background-color: #dbeafe;
+      outline: none;
+    }
+
+    button {
+      width: 100%;
+      margin-top: 20px;
+      padding: 10px 0;
+      font-size: 0.9rem;
+      font-weight: 700;
+      background-color: #3b82f6;
+      color: white;
+      border: none;
+      border-radius: 16px;
+      cursor: pointer;
+      box-shadow: 0 6px 15px rgba(59, 130, 246, 0.4);
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #2563eb;
+      box-shadow: 0 8px 20px rgba(37, 99, 235, 0.5);
+    }
+
+    .back {
+      display: block;
+      margin-top: 18px;
+      text-align: center;
+      color: #3498db;
+      font-size: 0.9rem;
+      text-decoration: none;
+    }
+
+    .back:hover {
+      text-decoration: underline;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(15px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h2>Edit Profile</h2>
+
+  <form th:action="@{/user/profile/update}" method="post" th:object="${user}">
+    <input type="hidden" th:field="*{id}" />
+
+    <label>First Name</label>
+    <input type="text" th:field="*{firstName}" required />
+
+    <label>Last Name</label>
+    <input type="text" th:field="*{lastName}" required />
+
+    <label>Email</label>
+    <input type="email" th:field="*{email}" required />
+
+    <label>Town</label>
+    <input type="text" th:field="*{town}" />
+
+    <label>Password</label>
+    <input type="password" th:field="*{password}" required />
+
+    <button type="submit">Save Changes</button>
+  </form>
+
+  <a class="back" th:href="@{/user/profile}">Back to Profile</a>
+</div>
+
+</body>
+</html>

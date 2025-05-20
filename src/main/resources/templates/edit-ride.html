@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <title>Edit Ride</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f2f4f8;
+            margin: 0;
+            padding: 40px 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            max-width: 400px;
+            width: 100%;
+            padding: 28px 32px;
+            background-color: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 0.5s ease forwards;
+        }
+
+        h2 {
+            text-align: center;
+            color: #2c3e50;
+            font-weight: 700;
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+        }
+
+        form label {
+            display: block;
+            font-weight: 600;
+            color: #34495e;
+            margin-top: 12px;
+            margin-bottom: 6px;
+            font-size: 0.9rem;
+        }
+
+        form input[type="text"],
+        form input[type="date"] {
+            width: 100%;
+            padding: 9px 12px;
+            font-size: 0.9rem;
+            border: 2px solid #cbd5e1;
+            border-radius: 12px;
+            box-sizing: border-box;
+            background-color: #f8fafc;
+            color: #1e293b;
+            transition: border-color 0.3s ease, background-color 0.3s ease;
+            outline-offset: 2px;
+        }
+
+        form input[type="text"]:focus,
+        form input[type="date"]:focus {
+            border-color: #3b82f6;
+            background-color: #e0f2fe;
+            outline: none;
+        }
+
+        form input[type="text"]:invalid {
+            border-color: #ef4444;
+            background-color: #fee2e2;
+        }
+
+        form button {
+            width: 100%;
+            padding: 11px 0;
+            margin-top: 24px;
+            background-color: #22c55e;
+            color: white;
+            border: none;
+            border-radius: 16px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            box-shadow: 0 6px 15px rgba(34, 197, 94, 0.4);
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        form button:hover {
+            background-color: #16a34a;
+            box-shadow: 0 8px 20px rgba(22, 163, 74, 0.5);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Edit Ride</h2>
+
+    <form th:action="@{'/update-ride/' + ${ride.id}}" th:object="${ride}" method="post">
+        <label>Name:</label>
+        <input type="text" th:field="*{name}" required />
+
+        <label>Contact:</label>
+        <input type="text" th:field="*{contact}" pattern="[0-9]{10}" required title="Please enter a 10-digit number" />
+
+        <label>Origin:</label>
+        <input type="text" th:field="*{origin}" required />
+
+        <label>Destination:</label>
+        <input type="text" th:field="*{destination}" required />
+
+        <label>Travel Date:</label>
+        <input type="date" th:field="*{travelDate}" required />
+
+        <button type="submit">Update Ride</button>
+    </form>
+</div>
+
+</body>
+</html>
